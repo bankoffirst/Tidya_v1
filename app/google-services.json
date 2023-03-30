@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "536407556726",
+    "project_id": "tidya-84309",
+    "storage_bucket": "tidya-84309.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536407556726:android:65e6320af3e9d31735d557",
+        "android_client_info": {
+          "package_name": "com.example.tidya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536407556726-8p3eektc4tg0o462o0dutusiognph5k7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tidya",
+            "certificate_hash": "4a0baeefe98751d5d8f1b1e87cbe08d3d69ebf19"
+          }
+        },
+        {
+          "client_id": "536407556726-eh3if2g39g69cikpl8c2qt6e3apvaf87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2x0OZZe_ZIippOQy9IcOqoh39BVVR7DA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536407556726-eh3if2g39g69cikpl8c2qt6e3apvaf87.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
