@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 import com.example.tidya.model.User
 
 @Composable
-fun HomeScreen(user: User){
+fun HistoryScreen(user: User){
     Scaffold {innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()
