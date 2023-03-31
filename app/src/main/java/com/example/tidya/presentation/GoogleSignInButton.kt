@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tidya.R
+import com.example.tidya.outfit
 
 @ExperimentalMaterialApi
 @Composable
@@ -38,7 +39,7 @@ fun GoogleSignInButtonUi(
             ,verticalAlignment = Alignment.CenterVertically,horizontalArrangement = Arrangement.Center){
             Icon(painter = painterResource(id = R.drawable.ic_google_icon), contentDescription = "Google sign button", tint = Color.Unspecified)
             Spacer(modifier = Modifier.width(10.dp))
-            Text(text = "CONTINUE WITH GOOGLE")
+            Text(text = "CONTINUE WITH GOOGLE", fontFamily = outfit)
 
             if (clicked){
                 onClicked()
