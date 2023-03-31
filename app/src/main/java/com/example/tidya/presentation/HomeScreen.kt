@@ -20,7 +20,7 @@ fun HomeScreen(user: User){
             .padding(innerPadding),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "Hello, ${user.displayName}",
+            Text(text = "${user.displayName}",
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.h4,
                 fontSize = 30.sp)
