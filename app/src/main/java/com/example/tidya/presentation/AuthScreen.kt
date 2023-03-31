@@ -4,15 +4,19 @@ import android.annotation.SuppressLint
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.tidya.model.AuthViewModel
+import com.example.tidya.outfit
 import com.example.tidya.utils.AuthResultContract
 import com.google.android.gms.common.api.ApiException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -22,19 +26,28 @@ import kotlinx.coroutines.launch
 @ExperimentalMaterialApi
 @Composable
 fun AuthView(errorText:String?, onClick:() -> Unit){
-    Scaffold() {
-        Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            GoogleSignInButtonUi(text = "Sign Up With Google",
-                loadingText = "Signing In....",
-                onClicked = {onClick()})
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(Color(0xff16C2D5)),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Tidya",
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 36.sp,
+            fontFamily = outfit,
+            modifier = Modifier.padding(top = 160.dp)
+        )
+
+        GoogleSignInButtonUi(onClicked = {onClick()})
             errorText?.let {
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(text = it)
             }
-        }
+
     }
 }
+
 
 
 @ExperimentalAnimationApi

@@ -9,11 +9,21 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tidya.model.AuthViewModel
 import com.example.tidya.presentation.AuthScreen
 import com.example.tidya.ui.theme.TidyaTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+
+var outfit = FontFamily(
+    listOf(
+        Font(R.font.outfit_regular, FontWeight.Normal),
+        Font(R.font.outfit_bold, FontWeight.Bold)
+    )
+)
 
 class MainActivity : ComponentActivity() {
     @ExperimentalCoroutinesApi
