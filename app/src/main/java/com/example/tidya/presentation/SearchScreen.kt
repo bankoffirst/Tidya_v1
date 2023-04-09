@@ -53,9 +53,6 @@ fun SearchScreen(){
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)){
-            //verticalArrangement = Arrangement.Center,
-            //horizontalAlignment = Alignment.CenterHorizontally) {
-            //coding
             Text(text = "Search", modifier = Modifier.padding(top = 20.dp, start = 20.dp),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
