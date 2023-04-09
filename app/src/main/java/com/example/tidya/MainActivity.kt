@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tidya.model.AuthViewModel
 import com.example.tidya.presentation.AuthScreen
+import com.example.tidya.presentation.SearchScreen // test
 import com.example.tidya.ui.theme.TidyaTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -36,7 +37,8 @@ class MainActivity : ComponentActivity() {
             TidyaTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    AuthScreen(AuthViewModel())
+                    //AuthScreen(AuthViewModel())
+                    SearchScreen()
                 }
             }
         }
