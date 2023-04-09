@@ -19,5 +19,4 @@ class AuthResultContract : ActivityResultContract<Int,Task<GoogleSignInAccount>?
         }
 
     }
-
 }
