@@ -15,12 +15,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tidya.bottomnav.BottomBar
+import com.example.tidya.bottomnav.BottomNav
 import com.example.tidya.model.AuthViewModel
+import com.example.tidya.model.User
 import com.example.tidya.outfit
 import com.example.tidya.utils.AuthResultContract
 import com.google.android.gms.common.api.ApiException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @ExperimentalMaterialApi
@@ -47,7 +52,6 @@ fun AuthView(errorText:String?, onClick:() -> Unit){
 
     }
 }
-
 
 
 @ExperimentalAnimationApi
@@ -82,6 +86,6 @@ fun AuthScreen(authViewModel: AuthViewModel){
         authResultLauncher.launch(signInRequestCode)
     })
     user?.let{
-        HomeScreen(user = it)
+        BottomNav(user = it)
     }
 }

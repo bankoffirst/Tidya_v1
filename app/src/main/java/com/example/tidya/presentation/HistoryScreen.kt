@@ -10,10 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tidya.model.User
-
+/*
 @Composable
-fun HistoryScreen(user: User){
+fun HistoryScreen() {
     Scaffold {innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()
@@ -27,5 +26,16 @@ fun HistoryScreen(user: User){
             Spacer(modifier = Modifier.height(10.dp))
             Text(text = user.email)
         }
+    }
+}
+
+ */
+@Composable
+fun HistoryScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Text(text = "History Screen", fontSize = 20.sp)
     }
 }
