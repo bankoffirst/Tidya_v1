@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tidya.bottomnav.BottomNav
 import com.example.tidya.model.AuthViewModel
 import com.example.tidya.outfit
 import com.example.tidya.utils.AuthResultContract
@@ -82,6 +83,6 @@ fun AuthScreen(authViewModel: AuthViewModel){
         authResultLauncher.launch(signInRequestCode)
     })
     user?.let{
-        HomeScreen(user = it)
+        BottomNav(user = it)
     }
 }
