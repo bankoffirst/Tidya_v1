@@ -1,14 +1,16 @@
 package com.example.tidya.presentation
 
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,24 +19,19 @@ import java.net.URL
 import java.util.concurrent.CompletableFuture
 import java.util.function.Supplier
 
-fun fda(): String {
+fun fda(drugName: String): String {
     val apiUrl = "https://api.fda.gov/drug/label.json?search="
-    val searchQuery = "Tylenol"
+    val searchQuery = drugName
 
-    // Build the API URL with the search query
     val url = URL(apiUrl + searchQuery)
 
-    // Fetch the data from the API using CompletableFuture
     val completableFuture = CompletableFuture.supplyAsync(Supplier {
         try {
             val jsonString = url.readText()
 
-            // Extract the "indications_and_usage" field from the JSON data
             val startIndex =
                 jsonString.indexOf("\"indications_and_usage\": [") + "\"indications_and_usage\": [".length
             val endIndex = jsonString.indexOf("]", startIndex)
-
-            // Return the extracted field from the JSON data
             jsonString.substring(startIndex, endIndex)
         } catch (e: Exception) {
             e.printStackTrace()
@@ -42,7 +39,6 @@ fun fda(): String {
         }
     })
 
-    // Wait for the CompletableFuture to complete and return the result
     return completableFuture.get()
 }
 
@@ -56,20 +52,66 @@ fun SearchScreen(){
             Text(text = "Search", modifier = Modifier.padding(top = 20.dp, start = 20.dp),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                fontFamily = outfit,)
+                fontFamily = outfit)
 
             val inputValue = remember {
                 mutableStateOf("")
             }
 
-            TextField(value = inputValue.value, onValueChange = { newValue -> inputValue.value = newValue }
-                , modifier = Modifier
-                    .padding(start = 10.dp, end = 10.dp, top = 10.dp)
-                    .fillMaxWidth())
+            OutlinedTextField(
+                value = inputValue.value,
+                onValueChange = { newValue -> inputValue.value = newValue },
+                shape = RoundedCornerShape(40.dp),
+                placeholder = { Text(text = "Enter a dung name.") },
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color(0xff16C2D5),
+                    disabledIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color(0xff16C2D5),
+                    backgroundColor = Color.White),
+                modifier = Modifier
+                    .padding(start = 25.dp, end = 25.dp, top = 20.dp, bottom = 10.dp)
+                    .fillMaxWidth()
+                    //.height(20.dp)//Comment this
+            )
 
-            Text(text = inputValue.value, modifier = Modifier.padding(top = 20.dp))
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 80.dp)
+                .verticalScroll(rememberScrollState())
+                .background(
+                    Color(0xffEBEBEB),
+                    shape = RoundedCornerShape(20.dp)
+                )
+            ){
 
-            Text(text = fda())
+                if (inputValue.value == ""){
+
+                } else{
+                    if (fda(inputValue.value) == ""){
+                        Text(text = "No drugs found.",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 20.dp),
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        fontFamily = outfit,)
+                    }else{
+                        Text(text = inputValue.value, modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            fontFamily = outfit)
+                        Text(text = "Indications and Usage", modifier = Modifier.padding(top = 5.dp, start = 20.dp, bottom = 0.dp, end = 20.dp),
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 16.sp,
+                            fontFamily = outfit)
+                        Text(text = fda(inputValue.value), modifier = Modifier.padding(top = 0.dp, start = 20.dp, end = 20.dp),
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 14.sp,
+                            fontFamily = outfit)
+                    }
+                }
+            }
 
         }
     }
