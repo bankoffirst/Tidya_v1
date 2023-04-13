@@ -76,8 +76,7 @@ fun SearchScreen(){
 
             Column(modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 80.dp)
-                .verticalScroll(rememberScrollState())
+                .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 50.dp)
                 .background(
                     Color(0xffEBEBEB),
                     shape = RoundedCornerShape(20.dp)
@@ -97,18 +96,22 @@ fun SearchScreen(){
                         fontSize = 14.sp,
                         fontFamily = outfit,)
                     }else{
-                        Text(text = inputValue.value, modifier = Modifier.padding(top = 20.dp, start = 20.dp),
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp,
-                            fontFamily = outfit)
-                        Text(text = "Indications and Usage", modifier = Modifier.padding(top = 5.dp, start = 20.dp, bottom = 0.dp, end = 20.dp),
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 16.sp,
-                            fontFamily = outfit)
-                        Text(text = fda(inputValue.value), modifier = Modifier.padding(top = 0.dp, start = 20.dp, end = 20.dp),
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 14.sp,
-                            fontFamily = outfit)
+                        Column(modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .fillMaxSize()) {
+                            Text(text = inputValue.value, modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 16.sp,
+                                fontFamily = outfit)
+                            Text(text = "Indications and Usage", modifier = Modifier.padding(top = 5.dp, start = 20.dp, bottom = 0.dp, end = 20.dp),
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 16.sp,
+                                fontFamily = outfit)
+                            Text(text = fda(inputValue.value), modifier = Modifier.padding(top = 0.dp, start = 20.dp, end = 20.dp),
+                                fontWeight = FontWeight.Normal,
+                                fontSize = 14.sp,
+                                fontFamily = outfit)
+                        }
                     }
                 }
             }

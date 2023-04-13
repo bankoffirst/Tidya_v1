@@ -11,15 +11,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tidya.model.User
+import com.example.tidya.outfit
 
 @Composable
 fun HistoryScreen(user: User){
     Scaffold {innerPadding ->
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(innerPadding),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            .padding(innerPadding)) {
+            Text(
+                text = "History", modifier = Modifier.padding(top = 20.dp, start = 20.dp),
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                fontFamily = outfit
+            )
             Text(text = "Hi ${user.displayName}",
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.h4,

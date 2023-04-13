@@ -1,13 +1,11 @@
 package com.example.tidya.bottomnav
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -31,9 +29,8 @@ fun BottomNav(user: User) {
 
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
-    ) {
-        BottomNavGraph(navController = navController, user = user)
-    }
+    )
+    {BottomNavGraph(navController = navController, user = user)}
 }
 
 @Composable
