@@ -19,12 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.tidya.R
+import com.example.tidya.bottomnav.BottomBarScreen
 
+@Preview(showBackground = true)
 @Composable
-fun AddScreen(){
+fun AddScreen(navController: NavController){
 
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
@@ -75,7 +79,7 @@ fun AddScreen(){
         .fillMaxSize()
         .padding(top = 20.dp, start = 20.dp))
     {
-        Button(onClick = {
+        Button(onClick = {navController.navigate(BottomBarScreen.Home.route)
 
         },colors = ButtonDefaults.buttonColors(backgroundColor = Color.White)) {
             Icon(painter = painterResource(id = R.drawable.ic_arrow_back), contentDescription = null)

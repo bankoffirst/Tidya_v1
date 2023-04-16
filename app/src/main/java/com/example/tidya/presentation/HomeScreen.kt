@@ -1,6 +1,7 @@
 package com.example.tidya.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -11,58 +12,85 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.tidya.R
+import com.example.tidya.bottomnav.BottomBarScreen
 import com.example.tidya.model.User
 import com.example.tidya.outfit
 
 
 @Composable
-fun HomeScreen(user: User){  //HomeScreen(user: User)
-    Scaffold {innerPadding ->
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)) {
+fun HomeScreen(user: User, navController: NavController) {  //HomeScreen(user: User)
+    Scaffold { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
             Text(
-                text = "Home", modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp),
+                text = "Home",
+                modifier = Modifier.padding(top = 20.dp, start = 20.dp, bottom = 20.dp),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 fontFamily = outfit
             )
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp)
-                .height(150.dp)
-                .background(
-                    Color(0xff16C2D5),
-                    shape = RoundedCornerShape(20.dp)
-                )) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)
+                    .height(150.dp)
+                    .background(
+                        Color(0xff16C2D5),
+                        shape = RoundedCornerShape(20.dp)
+                    )
+            ) {
                 Row() {
-                    Icon(painter = painterResource(id = R.drawable.baseline_face_24),
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_face_24),
                         contentDescription = null,
                         tint = Color.White,
-                        modifier = Modifier.padding(start = 20.dp, top = 20.dp))
-                    Text(text = "${user.displayName}",
+                        modifier = Modifier.padding(start = 20.dp, top = 20.dp)
+                    )
+                    Text(
+                        text = "${user.displayName}",
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.h4,
                         fontSize = 20.sp,
-                        modifier = Modifier.padding(start = 20.dp, top = 25.dp))
+                        modifier = Modifier.padding(start = 20.dp, top = 25.dp)
+                    )
                 }
-                Text(text = "${user.email}",
+                Text(
+                    text = "${user.email}",
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.h4,
                     fontSize = 16.sp,
-                    modifier = Modifier.padding(start = 80.dp))
+                    modifier = Modifier.padding(start = 80.dp)
+                )
             }
-        Row(modifier = Modifier.fillMaxWidth().padding(top = 10.dp)) {
-            Text(text = "Today activityes", modifier = Modifier
-                .padding(start = 20.dp, top = 15.dp),fontWeight = FontWeight.Bold)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp)
+            ) {
+                Text(
+                    text = "Today activityes", modifier = Modifier
+                        .padding(start = 20.dp, top = 15.dp), fontWeight = FontWeight.Bold
+                )
 
-            IconButton(modifier = Modifier.padding(start = 180.dp), onClick = {}) {
-                Icon(painter = painterResource(id = R.drawable.baseline_add_24),
-                    contentDescription = null,
-                    tint = Color.Unspecified)
+                //addMedicine(navController = navController)
+                IconButton(modifier = Modifier.padding(start = 180.dp),
+                    onClick = {
+                        navController.navigate(BottomBarScreen.Add.route)
+                    }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.baseline_add_24),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
+
+
                 }
             }
         }

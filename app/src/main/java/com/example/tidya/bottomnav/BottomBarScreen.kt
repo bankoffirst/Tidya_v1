@@ -32,4 +32,12 @@ sealed class BottomBarScreen(
         icon_focused = R.drawable.ic_history_light
     )
 
+    // Add
+    object Add: BottomBarScreen(
+        route = "add",
+        title = "Add",
+        icon = R.drawable.baseline_add_24,
+        icon_focused = R.drawable.baseline_add_24
+    )
+
 }

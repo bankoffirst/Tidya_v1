@@ -1,18 +1,17 @@
 package com.example.tidya.bottomnav
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.tidya.presentation.HistoryScreen
-import com.example.tidya.presentation.HomeScreen
-import com.example.tidya.presentation.SearchScreen
 import com.example.tidya.model.User
+import com.example.tidya.presentation.*
 
 @Composable
 fun BottomNavGraph(
     navController: NavHostController,
-    user: User
+    user: User,
 ) {
     NavHost(
         navController = navController,
@@ -20,7 +19,7 @@ fun BottomNavGraph(
     ){
         composable(route = BottomBarScreen.Home.route)
         {
-            HomeScreen(user = user)
+            HomeScreen(user = user, navController = navController)
         }
         composable(route = BottomBarScreen.Search.route)
         {
@@ -30,6 +29,10 @@ fun BottomNavGraph(
         {
             HistoryScreen(user = user)
         }
+        composable(route = BottomBarScreen.Add.route){
+            AddScreen(navController = navController)
+        }
+
     }
 
 }
