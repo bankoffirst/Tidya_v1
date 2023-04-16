@@ -26,7 +26,6 @@ import androidx.navigation.NavController
 import com.example.tidya.R
 import com.example.tidya.bottomnav.BottomBarScreen
 
-@Preview(showBackground = true)
 @Composable
 fun AddScreen(navController: NavController){
 

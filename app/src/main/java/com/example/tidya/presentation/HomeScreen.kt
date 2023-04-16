@@ -79,7 +79,6 @@ fun HomeScreen(user: User, navController: NavController) {  //HomeScreen(user: U
                         .padding(start = 20.dp, top = 15.dp), fontWeight = FontWeight.Bold
                 )
 
-                //addMedicine(navController = navController)
                 IconButton(modifier = Modifier.padding(start = 180.dp),
                     onClick = {
                         navController.navigate(BottomBarScreen.Add.route)
