@@ -30,7 +30,7 @@ fun BottomNav(user: User) {
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
     )
-    {BottomNavGraph(navController = navController, user = user)}
+    {BottomNavGraph(navController = navController, user = user) }
 }
 
 @Composable
